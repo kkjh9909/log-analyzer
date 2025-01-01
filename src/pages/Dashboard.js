@@ -63,6 +63,7 @@ const Dashboard = () => {
             />
             <LogTable logs={logs} />
         </div>
+        
     );
 };
 
