@@ -15,27 +15,66 @@ const Dashboard = () => {
     const fetchLogs = async () => {
         setLoading(true);
         setError(null);
+    
         try {
-            const params = new URLSearchParams();
-        
-            // 조건별 파라미터 추가
-            if (range) params.append('range', range);
-            if (filter === 'error') params.append('level', 'error');
-            if (filter === 'path' && path) params.append('path', path);
-        
-            console.log('쿼리 파라미터:', params.toString()); // 디버깅용
-        
-            // API 요청
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/logs?${params}`);
+            // GraphQL 쿼리
+            const query = `
+                query SearchLogs($filter: LogFilterInput, $range: String, $page: Int, $size: Int) {
+                    searchLogs(filter: $filter, range: $range, page: $page, size: $size) {
+                        id
+                        ip
+                        status
+                        uri
+                        message
+                        parameters
+                        timestamp
+                    }
+                }
+            `;
+    
+            // 필터링 조건 설정
+            const variables = {
+                filter: {
+                    query: "안녕"
+                },
+                range: "1M",
+                page: 0,
+                size: 10,
+            };
+    
+            if (filter === 'error') {
+                variables.filter.level = 'error';
+            }
+            if (filter === 'path' && path) {
+                variables.filter.path = path;
+            }
+    
+            // 요청 전 디버깅용
+            console.log('GraphQL 요청 변수:', variables);
+    
+            // GraphQL 서버 요청
+            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/graphql`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query, variables }),
+            });
+    
             if (!response.ok) {
                 const errorMessage = await response.text(); // 에러 메시지 확인
                 throw new Error(`HTTP Error: ${response.status}, ${errorMessage}`);
             }
-        
-            const data = await response.json();
-            setLogs(data.content); // 서버 응답 데이터를 상태로 설정
+    
+            const responseData = await response.json();
+            console.log(responseData)
+            if (responseData.errors) {
+                throw new Error(responseData.errors.map((err) => err.message).join(', '));
+            }
+    
+            setLogs(responseData.data.searchLogs); // 서버 응답 데이터를 상태로 설정
         } catch (err) {
-            console.error('에러 발생:', err.message); // 에러 상세 로그
+            console.error('fetchLog 에러 발생:', err.message); // 에러 상세 로그
             setError(err.message);
         } finally {
             setLoading(false);
@@ -56,7 +95,7 @@ const Dashboard = () => {
                 loading={loading} 
                 filter={filter}
                 setFilter={setFilter} 
-                spePath={path}
+                path={path}
                 setPath={setPath}
                 range={range}
                 setRange={setRange}

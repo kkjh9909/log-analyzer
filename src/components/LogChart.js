@@ -18,6 +18,8 @@ const LogChart = ({ logs, error, loading, filter, setFilter, path, setPath, rang
     };
     // 시간 데이터 필터링
     const chartData = logs.reduce((acc, log) => {
+        console.log("chartData err")
+
         const time = new Date(log.timestamp).toISOString(); // ISO 문자열로 변환
         const existingEntry = acc.find((entry) => entry.timestamp === time);
 
