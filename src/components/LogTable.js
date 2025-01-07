@@ -38,7 +38,7 @@ const LogTable = ({ logs }) => {
                         </tr>
                         {expandedRowId === index && log.parameters && (
                             <tr>
-                                <td colSpan="5" style={{ border: '1px solid #ddd', padding: '8px', backgroundColor: '#f9f9f9' }}>
+                                <td colSpan="6" style={{ border: '1px solid #ddd', padding: '8px', backgroundColor: '#f9f9f9' }}>
                                     <pre>{JSON.stringify(log.parameters, null, 2)}</pre>
                                 </td>
                             </tr>
