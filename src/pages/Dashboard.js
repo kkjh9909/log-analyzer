@@ -28,31 +28,30 @@ const Dashboard = () => {
                         message
                         parameters
                         timestamp
+                        method
                     }
                 }
             `;
     
-            // 필터링 조건 설정
+            // 기본 변수 설정
             const variables = {
-                filter: {
-                    query: "안녕"
-                },
-                range: "1M",
+                filter: {},
+                range: range !== 'all' ? range : null, // 'all'이면 range 제외
                 page: 0,
                 size: 10,
             };
     
-            if (filter === 'error') {
-                variables.filter.level = 'error';
-            }
-            if (filter === 'path' && path) {
-                variables.filter.path = path;
-            }
+            // 필터링 조건 동적으로 설정
+            if (filter === 'error')
+                variables.filter.level = 'error'; // 에러 상태의 로그만
+            else if (filter === 'path' && path)
+                variables.filter.path = path; // 특정 경로에 대한 로그만
+            
     
-            // 요청 전 디버깅용
+            // 디버깅용
             console.log('GraphQL 요청 변수:', variables);
     
-            // GraphQL 서버 요청
+            // GraphQL 요청
             const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/graphql`, {
                 method: 'POST',
                 headers: {
@@ -67,19 +66,21 @@ const Dashboard = () => {
             }
     
             const responseData = await response.json();
-            console.log(responseData)
+            console.log('응답 데이터:', responseData);
+    
             if (responseData.errors) {
                 throw new Error(responseData.errors.map((err) => err.message).join(', '));
             }
     
             setLogs(responseData.data.searchLogs); // 서버 응답 데이터를 상태로 설정
         } catch (err) {
-            console.error('fetchLog 에러 발생:', err.message); // 에러 상세 로그
+            console.error('fetchLogs 에러 발생:', err.message); // 에러 상세 로그
             setError(err.message);
         } finally {
             setLoading(false);
         }
     };
+    
 
     useEffect(() => {
         console.log("useEffect")

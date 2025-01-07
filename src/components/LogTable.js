@@ -16,6 +16,7 @@ const LogTable = ({ logs }) => {
                     <th style={{ border: '1px solid #ddd', padding: '8px' }}>status</th>
                     <th style={{ border: '1px solid #ddd', padding: '8px' }}>method</th>
                     <th style={{ border: '1px solid #ddd', padding: '8px' }}>path</th>
+                    <th style={{ border: '1px solid #ddd', padding: '8px' }}>IP</th>
                     <th style={{ border: '1px solid #ddd', padding: '8px' }}>timestamp</th>
                     <th style={{ border: '1px solid #ddd', padding: '8px' }}>parameters</th>
                 </tr>
@@ -26,7 +27,8 @@ const LogTable = ({ logs }) => {
                         <tr onClick={() => handleRowClick(index)} style={{ cursor: 'pointer' }}>
                             <td style={{ border: '1px solid #ddd', padding: '8px' }}>{log.status}</td>
                             <td style={{ border: '1px solid #ddd', padding: '8px' }}>{log.method}</td>
-                            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{log.path}</td>
+                            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{log.uri}</td>
+                            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{log.ip}</td>
                             <td style={{ border: '1px solid #ddd', padding: '8px' }}>
                                 {new Date(log.timestamp).toLocaleString()}
                             </td>
