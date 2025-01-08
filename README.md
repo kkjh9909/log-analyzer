@@ -1,74 +1,79 @@
-<<<<<<< HEAD
-# log-analyzer
-=======
-# Getting Started with Create React App
+# <img width="50" alt="quotivation_logo (1)" src="https://github.com/user-attachments/assets/d6327e1e-b277-4313-9152-16fad4be916d"> Quotivation
+ 
+Quotivation-Log Front-End
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[https://quotivation.kr](https://quotivation.kr) 사이트 주소  
+[https://api.quotivation.kr/api/quote](https://api.quotivation.kr/api/quote) API 함수 주소
+[https://github.com/kkjh9909/quotivation](https://github.com/kkjh9909/quotivation) Quotivation 프로젝트
 
-## Available Scripts
+## 🛠️ 프로젝트 스택
 
-In the project directory, you can run:
+- React 18 / JavaScript
+- recharts
 
-### `npm start`
+### 🖥️ 서버
+- Spring Boot
+- Spring Data JPA
+- Spring Security
+- Mysql(AWS RDS)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🔧 인프라
+- 배포: Docker (AWS EC2)
+- 리버스 프록시 NGINX
+- 모니터링: Prometheus, Grafana
+- 로그 관리: MongoDB Atlas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 설치 및 실행 방법
 
-### `npm test`
+### 1. 사전 요구사항
+* Node.js 16.x 버전 이상
+* MongoDB 설치 or MongoDB Atlas
+* Docker 설치(선택사항)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. 레포지토리 클론
+```bash
+git clone https://github.com/kkjh9909/log-analyzer.git
+cd log-analyzer
+```
 
-### `npm run build`
+### 3. 환경 설정
+* .env 파일의 MongoDB Server Port 번호만 수정:
+```bash
+REACT_APP_SERVER_URL={SERVER_URL}
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 4. 빌드 및 실행
+* 로컬 환경에서 실행:
+```javascript
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Docker를 사용한 배포:
+```bash
+docker-compose up -d 
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 5. 접속
+* 브라우저에서 http://localhost:3000로 접속.
 
-### `npm run eject`
+## 🌟 주요 기능
+* 실제 서버 쪽에서 발생한 로그 추적 기능
+* 서버 쪽 발생한 로그 관련 검색 및 분석
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📂 파일 구조도
+```bash
+log-analyzer
+├── src
+    ├─components
+    │  ├─LogChart,js
+    │  ├─LogTable.js
+    │  │
+    ├─pages
+    │  ├─Dashboard.js
+    │
+    ├─app.js
+    └─index.js
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> master
+## 📄 라이선스
+이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 [LICENSE](https://github.com/kkjh9909/log-analyzer/blob/main/LICENSE) 파일을 참조하세요.
