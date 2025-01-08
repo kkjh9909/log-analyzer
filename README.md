@@ -1,27 +1,15 @@
-# <img width="50" alt="quotivation_logo (1)" src="https://github.com/user-attachments/assets/d6327e1e-b277-4313-9152-16fad4be916d"> Quotivation
+# <img width="50" alt="quotivation_logo (1)" src="https://github.com/user-attachments/assets/d6327e1e-b277-4313-9152-16fad4be916d"> Log-analyzer
  
-Quotivation-Log Front-End
+Log-analyzer
 
 [https://quotivation.kr](https://quotivation.kr) 사이트 주소  
-[https://api.quotivation.kr/api/quote](https://api.quotivation.kr/api/quote) API 함수 주소
-[https://github.com/kkjh9909/quotivation](https://github.com/kkjh9909/quotivation) Quotivation 프로젝트
+[https://api.quotivation.kr/api/quote](https://api.quotivation.kr/api/quote) API 함수 주소  
+[https://github.com/kkjh9909/quotivation](https://github.com/kkjh9909/quotivation) Quotivation 프로젝트  
 
 ## 🛠️ 프로젝트 스택
 
 - React 18 / JavaScript
 - recharts
-
-### 🖥️ 서버
-- Spring Boot
-- Spring Data JPA
-- Spring Security
-- Mysql(AWS RDS)
-
-### 🔧 인프라
-- 배포: Docker (AWS EC2)
-- 리버스 프록시 NGINX
-- 모니터링: Prometheus, Grafana
-- 로그 관리: MongoDB Atlas
 
 ## 🚀 설치 및 실행 방법
 
