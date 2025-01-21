@@ -6,6 +6,8 @@ Log-analyzer
 [https://api.quotivation.kr/api/quote](https://api.quotivation.kr/api/quote) API 함수 주소  
 [https://github.com/kkjh9909/quotivation](https://github.com/kkjh9909/quotivation) Quotivation 프로젝트  
 
+![Image](https://github.com/user-attachments/assets/75be9b81-6808-417e-92c0-3e41e76ee7af)
+
 ## 🛠️ 프로젝트 스택
 
 - React 18 / JavaScript
