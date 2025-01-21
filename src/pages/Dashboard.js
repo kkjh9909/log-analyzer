@@ -22,6 +22,7 @@ const Dashboard = () => {
     const [filter, setFilter] = useState('all');
     const [path, setPath] = useState('');
     const [range, setRange] = useState('all');
+    const [searchPath, setSearchPath] = useState('')
 
     const getFilterVariables = () => {
         const variables = {
@@ -50,8 +51,8 @@ const Dashboard = () => {
         refetch(getFilterVariables());
     };
 
-    const handlePathChange = (newPath) => {
-        setPath(newPath);
+    const handlePathChange = () => {
+        setPath(searchPath);
         refetch(getFilterVariables());
     };
 
@@ -69,10 +70,11 @@ const Dashboard = () => {
                 loading={loading} 
                 filter={filter}
                 setFilter={handleFilterChange} 
-                path={path}
-                setPath={handlePathChange}
+                path={searchPath}
+                setPath={setSearchPath}
                 range={range}
                 setRange={handleRangeChange}
+                onApplyPath={handlePathChange}
             />
             <LogTable logs={data?.searchLogs || []} />
         </div>

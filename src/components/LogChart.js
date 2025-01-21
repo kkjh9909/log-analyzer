@@ -9,13 +9,13 @@ import {
     ResponsiveContainer,
 } from 'recharts';
 
-const LogChart = ({ logs, error, loading, filter, setFilter, path, setPath, range, setRange }) => {
+const LogChart = ({ logs, error, loading, filter, setFilter, path, setPath, range, setRange, onApplyPath }) => {
     const changeTimeRange = (newRange) => {
-        console.log(logs)
-        console.log(setRange)
-        console.log(range)
         setRange(newRange); // 새로운 timeRange 값으로 상태 업데이트
     };
+
+    
+
     // 시간 데이터 필터링
     const chartData = logs.reduce((acc, log) => {
         console.log("chartData err")
@@ -79,13 +79,21 @@ const LogChart = ({ logs, error, loading, filter, setFilter, path, setPath, rang
                     특정 경로 로그
                 </label>
                 {filter === 'path' && (
-                    <input
-                        type="text"
-                        placeholder="경로 입력 (예: /api/login)"
-                        value={path}
-                        onChange={(e) => setPath(e.target.value)}
-                        style={{ marginLeft: '10px' }}
-                    />
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="경로 입력 (예: /api/login)"
+                            value={path}
+                            onChange={(e) => setPath(e.target.value)}
+                            style={{ marginLeft: '10px' }}
+                        />
+                        <button
+                            onClick={onApplyPath}
+                            style={{ marginLeft: '10px' }}
+                        >
+                            적용
+                        </button>
+                    </div>
                 )}
             </div>
 
